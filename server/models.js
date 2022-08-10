@@ -18,6 +18,9 @@ module.exports = {
       upsert: true,
       rawResult: true,
       useFindAndModify: false,
-    });
+    })
+      .catch((err) => {
+        console.log('error in db post', err);
+      });
   },
 };
