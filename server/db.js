@@ -7,7 +7,7 @@ mongoose.connect(`mongodb://127.0.0.1:27017/${DB_NAME}`, () => {
   console.log(`Connected to database: ${DB_NAME}!`);
 });
 
-// put in taxonomy later
+// put in taxonomy and edible later
 // set common_names and propogation_methods to null or empty
 const plantSchema = new mongoose.Schema(
   {

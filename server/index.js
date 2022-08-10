@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
 app.get('/plants', controllers.getPlants);
+app.post('/plants', controllers.findPlantAndUpdate);
 
 const PORT = process.env.PORT || 3000;
 
