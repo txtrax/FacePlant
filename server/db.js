@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 const { DB_NAME } = process.env;
-// TODO: Set up a connection to the "expresso" MongoDB database
+
 mongoose.connect(`mongodb://127.0.0.1:27017/${DB_NAME}`, () => {
   console.log(`Connected to database: ${DB_NAME}!`);
 });
