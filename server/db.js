@@ -19,6 +19,7 @@ const plantSchema = new mongoose.Schema(
     image_url: String,
     location: String,
     propagation_methods: [String],
+    scientific_name: String,
   },
   { timestamps: true },
 );
