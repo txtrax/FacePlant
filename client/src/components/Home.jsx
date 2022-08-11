@@ -37,6 +37,7 @@ export default function Home({ plants, image }) {
       <ButtonContainer>
         <Button>Add Plant</Button>
         <Button>Diagnose</Button>
+        <Button>Add Timer</Button>
       </ButtonContainer>
 
       <PlantList plants={plants} />

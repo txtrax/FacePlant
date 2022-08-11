@@ -35,7 +35,7 @@ export default function NavBar({ setView }) {
   return (
     <NavContainer>
       <TitleContainer>
-        Face Plant
+        Face Plant 🌿
       </TitleContainer>
 
       <NavListContainer>

@@ -4,6 +4,8 @@ import axios from 'axios';
 import NavBar from './NavBar';
 import Home from './Home';
 import DetailList from './DetailList';
+import AboutMe from './AboutMe';
+import ContactMe from './ContactMe';
 import image from '../../../assets/213727.jpg';
 import footer from '../../../assets/2409038.jpg';
 import profile from '../../../assets/plantTee.jpg';
@@ -38,11 +40,11 @@ function App() {
       });
   }, []);
 
-  // const renderView = () => {
-  //   if (view === 'home') {
-  //     return <Home plants={plants} image={image} />;
-  //   }
-  // };
+  const renderView = () => {
+    if (view === 'home') {
+      return <Home plants={plants} image={image} />;
+    }
+  };
 
   if (plants.length === 0) {
     return <div>Hello world</div>;
@@ -55,6 +57,10 @@ function App() {
       <Home plants={plants} image={image} />
 
       <DetailList plants={plants} />
+
+      <AboutMe profile={profile} />
+
+      <ContactMe />
 
       <FooterImage src={footer} />
 
