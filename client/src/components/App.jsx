@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 import PlantList from './PlantList';
-import exampleData from '../exampleData.json';
+import NavBar from './NavBar';
+import data from '../../exampleData.json';
+import image from '../../../assets/213727.jpg';
+
+const BioImage = styled.img`
+  position: relative;
+  display: block;
+  width: 100%;
+`;
 
 function App() {
   const [plants, setPlants] = useState([]);
@@ -22,9 +31,12 @@ function App() {
   return (
     <div>
 
-      <h2>This is Face Plant Nav Bar</h2>
-      <img src={plants[0].image_url} />
-      <div>This is Profile Pic and Bio</div>
+      <NavBar />
+      <div>
+        This is Profile Pic and Bio
+        <BioImage src={image} />
+      </div>
+
       <PlantList plants={plants} />
       <div>This is Plant Details</div>
 
