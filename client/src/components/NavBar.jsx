@@ -19,7 +19,7 @@ const NavListContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 33%;
+  width: 50%;
   position: relative;
   text-align: center;
 `;
@@ -40,6 +40,7 @@ export default function NavBar({ setView }) {
 
       <NavListContainer>
         <NavEntry>HOME</NavEntry>
+        <NavEntry>DETAILS</NavEntry>
         <NavEntry>ABOUT ME</NavEntry>
         <NavEntry>CONTACT</NavEntry>
       </NavListContainer>
