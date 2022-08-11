@@ -14,10 +14,11 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   font-family: 'Lato', sans-serif;
+  font-size: 1em;
   align-items: center;
   margin: 43px;
-  width: 10%;
-  height: 43px;
+  width: 15%;
+  height: 50px;
   border: 1px solid;
   border-radius: 26px;
   border-color: #B3CB9B;

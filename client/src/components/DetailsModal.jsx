@@ -26,7 +26,7 @@ const ModalContent = styled.div`
   align-items: center;
   background-color: white;
   width: 50%;
-  height: 80%;
+  height: 90%;
 `;
 
 const Image = styled.img`
@@ -34,8 +34,8 @@ const Image = styled.img`
   display: block;
   object-fit: cover;
   border-radius: 5px;
-  width: 241px;
-  height: 175px
+  width: 300px;
+  height: 218px;
 `;
 
 export default function DetailsModal({ plant }) {
@@ -45,11 +45,15 @@ export default function DetailsModal({ plant }) {
   return (
     <Background>
       <ModalContent>
-        <h2>{plant.name}</h2>
+        <div>
+          <h2>{plant.name}</h2>
+          <Image src={plant.image_url} alt="plant image" />
+          <small>{date}</small>
+        </div>
 
-        <Image src={plant.image_url} alt="plant image" />
-
-        <small>{date}</small>
+        <div>
+          <b>Location:</b> {plant.location}
+        </div>
 
         <div>
           <b>Common Name:</b>
@@ -74,7 +78,6 @@ export default function DetailsModal({ plant }) {
           {' '}
           {plant.propagation_methods.length > 0 ? plant.propagation_methods[0] : 'N/A'}
         </div>
-
       </ModalContent>
     </Background>
   );

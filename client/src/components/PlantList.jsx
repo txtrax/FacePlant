@@ -11,7 +11,6 @@ const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 0 10%;
 `;
 
 export default function PlantList({ plants }) {

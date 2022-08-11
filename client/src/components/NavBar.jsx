@@ -24,6 +24,13 @@ const NavListContainer = styled.div`
   text-align: center;
 `;
 
+const NavEntry = styled.div`
+  color: black;
+  &:hover {
+    color: #B3CB9B;
+  }
+`;
+
 export default function NavBar({ setView }) {
   return (
     <NavContainer>
@@ -32,9 +39,9 @@ export default function NavBar({ setView }) {
       </TitleContainer>
 
       <NavListContainer>
-        <div>HOME</div>
-        <div>ABOUT ME</div>
-        <div>CONTACT</div>
+        <NavEntry>HOME</NavEntry>
+        <NavEntry>ABOUT ME</NavEntry>
+        <NavEntry>CONTACT</NavEntry>
       </NavListContainer>
     </NavContainer>
   );
