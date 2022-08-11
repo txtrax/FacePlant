@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MdFullscreenExit } from 'react-icons/md';
+import moment from 'moment';
 
 const Background = styled.div`
   display: block;
@@ -38,46 +38,41 @@ const Image = styled.img`
   height: 175px
 `;
 
-const Exit = styled(MdFullscreenExit)`
-  position: absolute;
-  object-fit: cover;
-  border-radius: 50%;
-  padding: 2px;
-  background-color: white;
-  color: #B2B2B2;
-  top: 25px;
-  right: 25px;
-  width: 1.5em;
-  height: 1.5em;
-  &:hover {
-    color: black;
-  }
-`;
-
-export default function DetailsModal(props) {
-  const {
-    plant, setShowDetails
-  } = props;
+export default function DetailsModal({ plant }) {
+  const date = moment(plant.createdAt).fromNow();
+  console.log(date);
 
   return (
     <Background>
-      <Exit onClick={() => setShowDetails(false)} />
-
       <ModalContent>
         <h2>{plant.name}</h2>
 
         <Image src={plant.image_url} alt="plant image" />
 
-        <small>{plant.createdAt}</small>
-
-        <div><b>Common Name:</b> {plant.common_names.length > 0 ? plant.common_names[0] : 'N/A'}</div>
-
-        <div><b>Scientific Name:</b> {plant.scientific_name ? plant.scientific_name : 'N/A'}</div>
-
-        <div><b>Description:</b> {plant.description ? plant.description : 'N/A'}</div>
+        <small>{date}</small>
 
         <div>
-          <b>Propagation:</b> {plant.propagation_methods.length > 0 ? plant.propagation_methods[0] : 'N/A'}
+          <b>Common Name:</b>
+          {' '}
+          {plant.common_names.length > 0 ? plant.common_names[0] : 'N/A'}
+        </div>
+
+        <div>
+          <b>Scientific Name:</b>
+          {' '}
+          {plant.scientific_name ? plant.scientific_name : 'N/A'}
+        </div>
+
+        <div>
+          <b>Description:</b>
+          {' '}
+          {plant.description ? plant.description : 'N/A'}
+        </div>
+
+        <div>
+          <b>Propagation:</b>
+          {' '}
+          {plant.propagation_methods.length > 0 ? plant.propagation_methods[0] : 'N/A'}
         </div>
 
       </ModalContent>

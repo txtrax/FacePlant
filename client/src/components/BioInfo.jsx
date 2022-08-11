@@ -32,23 +32,39 @@ const ShareContainer = styled.div`
 `;
 
 const FacebookIcon = styled(FaFacebookSquare)`
-  height: 1.5em;
+  width: 2em;
+  height: 2em;
   color: #B2B2B2;
+  &:hover {
+    color: #B3CB9B;
+  }
 `;
 
 const TwitterIcon = styled(FaTwitterSquare)`
-  height: 1.5em;
+  width: 2em;
+  height: 2em;
   color: #B2B2B2;
+  &:hover {
+    color: #B3CB9B;
+  }
 `;
 
 const PinterestIcon = styled(FaPinterestSquare)`
-  height: 1.5em;
+  width: 2em;
+  height: 2em;
   color: #B2B2B2;
+  &:hover {
+    color: #B3CB9B;
+  }
 `;
 
 const InstagramIcon = styled(FaInstagramSquare)`
-  height: 1.5em;
+  width: 2em;
+  height: 2em;
   color: #B2B2B2;
+  &:hover {
+    color: #B3CB9B;
+  }
 `;
 
 export default function BioInfo({ image }) {

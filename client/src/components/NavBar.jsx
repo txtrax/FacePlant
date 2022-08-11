@@ -24,7 +24,7 @@ const NavListContainer = styled.div`
   text-align: center;
 `;
 
-export default function NavBar() {
+export default function NavBar({ setView }) {
   return (
     <NavContainer>
       <TitleContainer>
@@ -35,7 +35,6 @@ export default function NavBar() {
         <div>HOME</div>
         <div>ABOUT ME</div>
         <div>CONTACT</div>
-        {/* <div>DIAGNOSE</div> */}
       </NavListContainer>
     </NavContainer>
   );

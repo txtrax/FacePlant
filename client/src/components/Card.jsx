@@ -31,9 +31,9 @@ export default function Card({ plant }) {
   const description = `${plant.description.slice(0, 100)}...`;
 
   const [showDetails, setShowDetails] = useState(false);
-
+  const toggle = !showDetails;
   return (
-    <CardContainer onClick={() => setShowDetails(true)}>
+    <CardContainer onClick={() => setShowDetails(toggle)}>
 
       <CardImage src={plant.image_url} alt="plant image" />
 
@@ -47,7 +47,6 @@ export default function Card({ plant }) {
 
       {showDetails && (
         <DetailsModal
-          setShowDetails={setShowDetails}
           plant={plant}
         />
       )}

@@ -1,42 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import PlantList from './PlantList';
 import NavBar from './NavBar';
-import BioInfo from './BioInfo';
+import Home from './Home';
 import image from '../../../assets/213727.jpg';
 import footer from '../../../assets/2409038.jpg';
+import profile from '../../../assets/plantTee.jpg';
 
 const AppContainer = styled.div`
   postion: relative;
   font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const Button = styled.button`
-  position: relative
-  display: flex;
-  justify-content: center;
-  font-family: 'Lato', sans-serif;
-  align-items: center;
-  margin: 43px;
-  width: 10%;
-  height: 43px;
-  border: 1px solid;
-  border-radius: 26px;
-  border-color: #B3CB9B;
-  background-color: #B3CB9B;
-  color: white;
-  &:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  }
 `;
 
 const FooterImage = styled.img`
@@ -50,6 +25,7 @@ const FooterImage = styled.img`
 
 function App() {
   const [plants, setPlants] = useState([]);
+  const [view, setView] = useState('home');
 
   useEffect(() => {
     axios.get('/plants')
@@ -61,22 +37,21 @@ function App() {
       });
   }, []);
 
+  const renderView = () => {
+    if (view === 'home') {
+      return <Home plants={plants} image={image} />;
+    }
+  };
+
   if (plants.length === 0) {
     return <div>Hello world</div>;
   }
   return (
     <AppContainer>
 
-      <NavBar />
+      <NavBar setView={setView} />
 
-      <BioInfo image={image} />
-
-      <ButtonContainer>
-        <Button>Add Plant</Button>
-        <Button>Diagnose</Button>
-      </ButtonContainer>
-
-      <PlantList plants={plants} />
+      {renderView()}
 
       <FooterImage src={footer} />
 
