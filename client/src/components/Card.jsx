@@ -1,41 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import DetailsModal from './DetailsModal';
 
 const CardContainer = styled.aside`
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 2px solid;
-  border-color: black;
-  width: 280px;
+  width: 241px;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const CardImage = styled.img`
   position: relative;
   display: block;
   object-fit: cover;
-  width: 280px;
-  height: 200px;
+  height: 175px
+`;
+
+const PlantInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px 7px;
+  height: 125px;
 `;
 
 export default function Card({ plant }) {
-  console.log(plant);
-  const description = `${plant.description.slice(0, 118)}...`;
+  const description = `${plant.description.slice(0, 100)}...`;
+
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <CardContainer>
+    <CardContainer onClick={() => setShowDetails(true)}>
 
       <CardImage src={plant.image_url} alt="plant image" />
 
-      <h2>
-        {plant.name}
-      </h2>
+      <PlantInfo>
+        <big>{plant.name}</big>
 
-      {plant.location}
+        {plant.location}
 
-      <p>{description}</p>
+        <small>{description}</small>
+      </PlantInfo>
 
-      <small>{plant.createdAt}</small>
+      {showDetails && (
+        <DetailsModal
+          setShowDetails={setShowDetails}
+          plant={plant}
+        />
+      )}
 
     </CardContainer>
   );
