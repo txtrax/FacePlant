@@ -94,7 +94,6 @@ export default function AddModal({ setIsOpen, setPlants }) {
     uploadPreset: 'presetFEC',
   }, (error, result) => {
     if (!error && result && result.event === 'success') {
-      console.log('data', result.info.url);
       setImageURL(result.info.url);
     }
   });

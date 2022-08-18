@@ -13,8 +13,6 @@ module.exports = {
   },
 
   findPlantAndUpdate(req, res) {
-    console.log(req.body);
-    console.log('line 17');
     models.addOrUpdateOne(req.body)
       .then((results) => {
         // Error [ERR_HTTP_HEADERS_SENT] bs res.send and res.end

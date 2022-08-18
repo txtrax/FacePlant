@@ -12,7 +12,7 @@ module.exports = {
     const filter = {
       name: plant.name,
     };
-
+    console.log(plant);
     return Plant.findOneAndUpdate(filter, plant, {
       new: true,
       upsert: true,
