@@ -14,8 +14,6 @@ const ListContainer = styled.div`
 `;
 
 export default function PlantList({ plants }) {
-  console.log(plants);
-
   return (
     <div>
 

@@ -25,6 +25,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 20px;
+  width: 575px;
 `;
 
 export default function DetailList({ plant }) {
@@ -33,7 +34,7 @@ export default function DetailList({ plant }) {
       <Image src={plant.image_url} alt="plant image" />
 
       <ContentContainer>
-        <h2>{plant.name}</h2>
+        <h3>{plant.name}</h3>
 
         <div>
           <b>Location:</b> {plant.location}

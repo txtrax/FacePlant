@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
+import axios from 'axios';
 
 const Background = styled.div`
   display: block;
@@ -23,8 +24,10 @@ const ModalContent = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 500px;
-  height: 500px;
+  height: 600px;
 `;
 
 const ExitIcon = styled(MdClose)`
@@ -42,21 +45,20 @@ const ExitIcon = styled(MdClose)`
   }
 `;
 
-const CheckoutContainer = styled.div`
+const FormContainer = styled.div`
   display: flex;
-  object-fit: cover;
-  color: black;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-between;
-  background-color: #DABECA;
-  height: 500px;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  padding: 25px;
 `;
 
-const CheckOutButton = styled.button`
+const Button = styled.button`
   display: flex;
   position: absolute;
-  top: 65px;
+  bottom: 325px;
   justify-content: center;
   font-family: 'Lato', sans-serif;
   align-items: center;
@@ -74,12 +76,17 @@ const CheckOutButton = styled.button`
 `;
 
 const Image = styled.img`
-  width: 50%;
-  height: 50%;
+  padding: 25px 0 0 0;
+  width: 200px;
+  height: 200px;
 `;
 
-export default function AddModal({ setIsOpen }) {
-  const [photoURL, setPhotoURL] = useState(null);
+export default function AddModal({ setIsOpen, setPlants }) {
+  const [image_url, setImageURL] = useState(null);
+  const [name, setName] = useState('');
+  const [common_name, setCommonName] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
 
   // only allow upload of one picture
   const widget = window.cloudinary.createUploadWidget({
@@ -88,7 +95,7 @@ export default function AddModal({ setIsOpen }) {
   }, (error, result) => {
     if (!error && result && result.event === 'success') {
       console.log('data', result.info.url);
-      setPhotoURL(result.info.url);
+      setImageURL(result.info.url);
     }
   });
 
@@ -96,22 +103,80 @@ export default function AddModal({ setIsOpen }) {
     widget.open();
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newEntry = {
+      name,
+      common_name: [common_name],
+      description,
+      image_url,
+      location,
+    };
+
+    const completed = Object.values(newEntry).every((value) => value !== '');
+
+    if (completed) {
+      axios.post('/plants', newEntry)
+        .then((results) => {
+          setPlants(results.data);
+        })
+        .then(() => {
+          setIsOpen(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <Background>
       <ModalContent>
+        <ExitIcon onClick={() => setIsOpen(false)} />
 
-
-          <ExitIcon onClick={() => setIsOpen(false)} />
-
-          <CheckOutButton
+        {image_url ? (
+          <Button
             style={{ fontSize: '1em' }}
-            onClick={() => click()}
+            onClick={(e) => handleSubmit(e)}
           >
-            Upload Photo
-          </CheckOutButton>
+            Submit
+          </Button>
+        )
+          : (
+            <Button
+              style={{ fontSize: '1em' }}
+              onClick={() => click()}
+            >
+              Upload Photo
+            </Button>
+          )}
 
-          <Image src={photoURL} />
+        <Image src={image_url} />
 
+        <FormContainer>
+          <label>
+            Name:
+            <input type="text" onChange={(e) => { setName(e.target.value); }} />
+          </label>
+          <label>
+            Common Name:
+            <input type="text" onChange={(e) => { setCommonName(e.target.value); }} />
+          </label>
+          <label>
+            Location:
+            <input type="text" onChange={(e) => { setLocation(e.target.value); }} />
+          </label>
+          <label>
+            Description:
+            <textarea
+              type="text"
+              cols="30"
+              rows="8"
+              onChange={(e) => { setDescription(e.target.value); }}
+            />
+          </label>
+        </FormContainer>
       </ModalContent>
     </Background>
   );

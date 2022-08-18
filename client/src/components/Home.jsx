@@ -30,7 +30,7 @@ const Button = styled.button`
   }
 `;
 
-export default function Home({ plants, image }) {
+export default function Home({ plants, image, setPlants }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -43,8 +43,8 @@ export default function Home({ plants, image }) {
         <Button>Add Timer</Button>
       </ButtonContainer>
 
-      <PlantList plants={plants} />
-      {isOpen && <AddModal setIsOpen={setIsOpen} />}
+      {plants && <PlantList plants={plants} />}
+      {isOpen && <AddModal setIsOpen={setIsOpen} setPlants={setPlants} />}
     </div>
   );
 }

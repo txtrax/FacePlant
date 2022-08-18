@@ -54,7 +54,7 @@ function App() {
 
       <NavBar setView={setView} />
 
-      <Home plants={plants} image={image} />
+      <Home plants={plants} image={image} setPlants={setPlants} />
 
       <DetailList plants={plants} />
 
