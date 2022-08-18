@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PlantList from './PlantList';
 import BioInfo from './BioInfo';
+import AddModal from './AddModal';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -30,17 +31,20 @@ const Button = styled.button`
 `;
 
 export default function Home({ plants, image }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <BioInfo image={image} />
 
       <ButtonContainer>
-        <Button>Add Plant</Button>
+        <Button onClick={() => { setIsOpen(true); }}>Add Plant</Button>
         <Button>Diagnose</Button>
         <Button>Add Timer</Button>
       </ButtonContainer>
 
       <PlantList plants={plants} />
+      {isOpen && <AddModal setIsOpen={setIsOpen} />}
     </div>
   );
 }
