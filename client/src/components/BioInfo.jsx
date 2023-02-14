@@ -78,7 +78,9 @@ export default function BioInfo({ image }) {
 
         <hr />
 
-        <p style={{ fontSize: '0.85em' }}>Photos provided by Pexel and Plant.id.</p>
+        <p>A plant tracker for taking care of your Houseplants.</p>
+
+        <p style={{ fontSize: '0.65em' }}>Photos provided by Pexel and Plant.id.</p>
 
         <ShareContainer>
           <FacebookIcon />

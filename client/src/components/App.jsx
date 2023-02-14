@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import NavBar from './NavBar';
-import Home from './Home';
+import BioInfo from './BioInfo';
+import PlantList from './PlantList';
 import DetailList from './DetailList';
 import AboutMe from './AboutMe';
 import ContactMe from './ContactMe';
@@ -54,7 +55,9 @@ function App() {
 
       <NavBar setView={setView} />
 
-      <Home plants={plants} image={image} setPlants={setPlants} />
+      <BioInfo image={image} />
+
+      <PlantList plants={plants} setPlants={setPlants} />
 
       <DetailList plants={plants} />
 
